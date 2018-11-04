@@ -20,12 +20,6 @@ angular.module('ticketApp', []).controller('TicketController', ['$scope', '$http
         end_date: '2018-9-1'}
     ];
 
-<<<<<<< HEAD
-=======
-    $scope.ticket_page = true;
-    $scope.main_page = false;
-    $scope.university_input = '';
->>>>>>> 16bc9da4176c26c00f2e12c8695c9ff4cbff5158
 
 
     $scope.university_select = function(universityInput) {
@@ -45,7 +39,6 @@ angular.module('ticketApp', []).controller('TicketController', ['$scope', '$http
     $scope.select_day = function(day) {
         $scope.flights = day.destinations;
     };
-
 
 
 }]);
