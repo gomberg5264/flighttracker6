@@ -65,7 +65,7 @@ body {
 .sub-item {
   list-style: none;
 }
-.sub-item > .button {
+.sub-item > .buttonn {
   color: #666666;
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
@@ -73,7 +73,7 @@ body {
   padding: 24px 32px;
   text-decoration: none;
 }
-.sub-item > .button:hover {
+.sub-item > .buttonn:hover {
   background-color: #db9045;
   color: #F2F2F2;
   cursor: pointer;
@@ -235,9 +235,25 @@ body {
 }
 .body-item > .textb {
   color: #555555;
-  font-weight: bold;
+    right: 20px;
 }
 .body-item > .textb:not(:last-child) {
+  margin-right: 8px;
+}
+.body-item > .textc {
+  color: #555555;
+  text-align: "center";
+  left: 230px;
+}
+.body-item > .textc:not(:last-child) {
+  margin-right: 8px;
+}
+.body-item > .texta  {
+  color: #555555;
+  text-align: "center";
+  left: 100px;
+}
+.body-item > .texta:not(:last-child) {
   margin-right: 8px;
 }
 .body-item > .text {
