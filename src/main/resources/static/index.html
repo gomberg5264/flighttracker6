@@ -178,10 +178,12 @@
 					</div>
 					<div class="col-12">
 						<div class="find_form_container">
+							<form>
                             <div class="autocomplete" style="width:300px;">
-									<input id="myInput" type="text" name="" placeholder="University" ng-model="university_input">
+								<input id="myInput" type="text" placeholder="University" ng-model="universityInput"/>
                             </div>
-                            <input type="submit" ng-click="university_select()" />
+                            <input type="submit" ng-click="university_select(universityInput)" />
+                            </form>
 						</div>
 					</div>
 				</div>
