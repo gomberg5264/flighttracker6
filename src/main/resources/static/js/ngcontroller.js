@@ -40,5 +40,12 @@ angular.module('ticketApp', []).controller('TicketController', ['$scope', '$http
         $scope.flights = day.destinations;
     };
 
+    $scope.going_back = function(){
+        $scope.ticket_page = false;
+        $scope.main_page = true;
+        $scope.universityInput = '';
+        $scope.flights = [];
+    }
+
 
 }]);
