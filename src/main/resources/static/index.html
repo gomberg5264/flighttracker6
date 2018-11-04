@@ -68,9 +68,8 @@
 			<ul class="sched-grid">
 				<li class="sched-column" ng-repeat="day in possible_days" ng-click="select_day(day)">
 					<div class="sched-card">
-						<div class="heading">start | end</div>
-						<div class="heading">{{day.start_date}}</div>
-						<div class="heading">{{day.end_date}}</div>
+						<div class="heading">Start Date: <b>{{day.start_date}}</b></div>
+						<div class="heading">End Date: <b>{{day.end_date}}</b></div>
 					</div>
 				</li>
 			</ul>
