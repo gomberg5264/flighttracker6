@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="BrowseRoutesResponseApiDto" type="BrowseRoutesResponseApiDtoType"/>
+  <xs:complexType name="CurrencyDtoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Code"/>
+      <xs:element type="xs:string" name="Symbol"/>
+      <xs:element type="xs:string" name="ThousandsSeparator"/>
+      <xs:element type="xs:string" name="DecimalSeparator"/>
+      <xs:element type="xs:string" name="SymbolOnLeft"/>
+      <xs:element type="xs:string" name="SpaceBetweenAmountAndSymbol"/>
+      <xs:element type="xs:string" name="RoundingCoefficient"/>
+      <xs:element type="xs:string" name="DecimalDigits"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CurrenciesType">
+    <xs:sequence>
+      <xs:element type="CurrencyDtoType" name="CurrencyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RouteDtoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="OriginId"/>
+      <xs:element type="xs:string" name="DestinationId"/>
+      <xs:element type="QuoteIdsType" name="QuoteIds" minOccurs="0"/>
+      <xs:element type="xs:string" name="Price" nillable="true"/>
+      <xs:element type="xs:string" name="QuoteDateTime" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QuoteIdsType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="xs:string" name="int"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="RoutesType">
+    <xs:sequence>
+      <xs:element type="RouteDtoType" name="RouteDto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CarrierIdsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutboundLegType">
+    <xs:sequence>
+      <xs:element type="CarrierIdsType" name="CarrierIds"/>
+      <xs:element type="xs:string" name="OriginId"/>
+      <xs:element type="xs:string" name="DestinationId"/>
+      <xs:element type="xs:string" name="DepartureDate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InboundLegType">
+    <xs:sequence>
+      <xs:element type="CarrierIdsType" name="CarrierIds"/>
+      <xs:element type="xs:string" name="OriginId"/>
+      <xs:element type="xs:string" name="DestinationId"/>
+      <xs:element type="xs:string" name="DepartureDate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QuoteDtoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="QuoteId"/>
+      <xs:element type="xs:string" name="MinPrice"/>
+      <xs:element name="Direct">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="false"/>
+            <xs:enumeration value="true"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="OutboundLegType" name="OutboundLeg"/>
+      <xs:element type="InboundLegType" name="InboundLeg"/>
+      <xs:element type="xs:string" name="QuoteDateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QuotesType">
+    <xs:sequence>
+      <xs:element type="QuoteDtoType" name="QuoteDto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlaceDtoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PlaceId"/>
+      <xs:element type="xs:string" name="IataCode" minOccurs="0"/>
+      <xs:element type="xs:string" name="Name"/>
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Country"/>
+            <xs:enumeration value="Station"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="SkyscannerCode"/>
+      <xs:element type="xs:string" name="CityName" minOccurs="0"/>
+      <xs:element type="xs:string" name="CityId" minOccurs="0"/>
+      <xs:element type="xs:string" name="CountryName" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlacesType">
+    <xs:sequence>
+      <xs:element type="PlaceDtoType" name="PlaceDto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CarriersDtoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CarrierId"/>
+      <xs:element type="xs:string" name="Name"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CarriersType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="CarriersDtoType" name="CarriersDto"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="BrowseRoutesResponseApiDtoType">
+    <xs:sequence>
+      <xs:element type="CurrenciesType" name="Currencies"/>
+      <xs:element type="RoutesType" name="Routes"/>
+      <xs:element type="QuotesType" name="Quotes"/>
+      <xs:element type="PlacesType" name="Places"/>
+      <xs:element type="CarriersType" name="Carriers"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

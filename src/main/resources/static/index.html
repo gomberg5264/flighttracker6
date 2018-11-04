@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ticketApp">
+<head>
+	<title>NoMad</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="NoMad">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link href="plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+	<script src="js/ngcontroller.js"></script>
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="styles/bootstrap4/popper.js"></script>
+	<script src="styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="plugins/easing/easing.js"></script>
+	<script src="plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="js/custom.js"></script>
+	<link rel='stylesheet' href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div ng-controller="TicketController">
+
+
+
+
+
+	<div class="ticket-page" ng-if="ticket_page">
+	<section class='main-header'>
+		<div class='header-container'></div>
+		<nav class="sub-container">
+			<ul class="sub-nav">
+				<li class="sub-item"><a class='button' href="">Search Flight</a></li>
+				<li class="sub-item"><a class='button' href="">Select Flight</a></li>
+				<li class="sub-item"><a class='button' href="">Confirmation</a></li>
+			</ul>
+		</nav>
+	</section>
+
+	<div class="route-information">
+		<span class="origin">Place of origin</span>
+		<span class="line"></span>
+		<span class="icon ion-plane"></span>
+		<span class="line"></span>
+		<span class="destination">destinantion</span>
+	</div>
+
+	<section class="schedule">
+		<div class="schedule-bar">
+			<button class="button-left">
+				<i class="ion-ios-play"></i>
+			</button>
+
+			<ul class="sched-grid">
+				<li class="sched-column" ng-repeat="day in possible_days" ng-click="select_day(day)">
+					<div class="sched-card">
+						<div class="heading">day | month</div>
+						<div class="heading">{{day.start_date}}</div>
+						<div class="heading">{{day.end_date}}</div>
+					</div>
+				</li>
+			</ul>
+
+			<button class="button-right">
+				<i class="ion-ios-play"></i>
+			</button>
+		</div>
+	</section>
+
+	<section class="plane-ticket-section">
+		<div class="table-header">
+			<div class="text">Destination</div>
+			<div class="text">Airline</div>
+			<div class="text">Price</div>
+		</div>
+		<ul class="flight-list">
+			<li class="flight-row" ng-repeat="flight in (flights | orderBy: 'price')">
+				<div class="body-item">
+					<div class="textb">{{ flight.destination }} / {{ flight.flightDetail.destination }}</div>
+				</div>
+				<div class="body-item">
+					<div class="textb">{{ flight.flightDetail.outboundAirline }} / {{ flight.flightDetail.inboundAirline }}</div>
+				</div>
+				<div class="body-item">
+					<div class="text">{{ flight.price }}</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<footer class="action-footer">
+		<a class="btn btn-gray back" href="">Back</a>
+		<a class="btn btn-primary" href="">Continue</a>
+	</footer>
+	</div>
+
+
+
+
+
+	<div class="super_container main-page" ng-if="main_page">
+
+		<!-- Header -->
+
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_container d-flex flex-row align-items-center justify-content-start">
+
+							<!-- Logo -->
+							<div class="logo_container">
+								<div class="logo">
+									<div class="logo_image"><img src="images/logo.png" alt=""></div>
+								</div>
+							</div>
+
+							<!-- Main Navigation -->
+							<nav class="main_nav ml-auto">
+								<ul class="main_nav_list">
+									<li class="main_nav_item active"><a href="#">Home</a></li>
+								</ul>
+							</nav>
+
+							<!-- Search -->
+							<div class="search">
+								<form action="#" class="search_form">
+									<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
+									<button type="submit" class="search_button ml-auto ctrl_class"><img src="images/search.png" alt=""></button>
+								</form>
+							</div>
+
+							<!-- Hamburger -->
+							<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<!-- Home -->
+
+		<div class="home">
+			<div class="home_background" style="background-image:url(images/home.jpg)"></div>
+			<div class="home_content">
+				<div class="home_content_inner">
+					<div class="home_text_large">discover</div>
+					<div class="home_text_small">Discover new worlds</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Find Form -->
+
+		<div class="find">
+			<!-- Image by https://unsplash.com/@garciasaldana_ -->
+			<div class="find_background parallax-window" data-parallax="scroll" data-image-src="images/find.jpg" data-speed="0.8"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="find_title text-center">Find the Adventure of a lifetime</div>
+					</div>
+					<div class="col-12">
+						<div class="find_form_container">
+                            <div class="autocomplete" style="width:300px;">
+									<input id="myInput" type="text" name="" placeholder="University" ng-model="university_input">
+                            </div>
+                            <input type="submit" ng-click="university_select()" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Blog -->
+
+		<div class="special">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<h2>Travel Blog</h2>
+							<div>A sneek peak at the world</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="special_content">
+				<div class="special_slider_container">
+					<div class="owl-carousel owl-theme special_slider">
+
+						<div class="owl-item">
+							<div class="special_item">
+								<div class="special_item_background"><img src="images/special_1.jpg" alt="https://unsplash.com/@garciasaldana_"></div>
+								<div class="special_item_content text-center">
+									<div class="special_category">Exploring</div>
+									<div class="special_title"><a href="offers.html">Indonesia</a></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="owl-item">
+							<div class="special_item d-flex flex-column align-items-center justify-content-center">
+								<div class="special_item_background"><img src="images/special_2.jpg" alt="https://unsplash.com/@varshesh"></div>
+								<div class="special_item_content text-center">
+									<div class="special_category">Culture</div>
+									<div class="special_title"><a href="offers.html">India</a></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="owl-item">
+							<div class="special_item d-flex flex-column align-items-center justify-content-center">
+								<div class="special_item_background"><img src="images/special_3.jpg" alt="https://unsplash.com/@paulgilmore_"></div>
+								<div class="special_item_content text-center">
+									<div class="special_category">Skying</div>
+									<div class="special_title"><a href="offers.html">Thailand</a></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="owl-item">
+							<div class="special_item d-flex flex-column align-items-center justify-content-center">
+								<div class="special_item_background"><img src="images/special_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
+								<div class="special_item_content text-center">
+									<div class="special_category">Adventure</div>
+									<div class="special_title"><a href="offers.html">Bali</a></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="owl-item">
+							<div class="special_item d-flex flex-column align-items-center justify-content-center">
+								<div class="special_item_background"><img src="images/special_5.jpg"></div>
+								<div class="special_item_content text-center">
+									<div class="special_category">Romance</div>
+									<div class="special_title"><a href="offers.html">France</a></div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="special_slider_nav d-flex flex-column align-items-center justify-content-center">
+						<img src="images/special_slider.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+</div>
+
+</body>
+</html>
